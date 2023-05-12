@@ -9,7 +9,7 @@ stripe.exe
 *.egg
 
 dist
-db.sqlite3
+
 
 venv
 
