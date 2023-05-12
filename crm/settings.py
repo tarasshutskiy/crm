@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'app.apps.AppConfig',
     'cms.apps.CmsConfig',
+    'price.apps.PriceConfig',
+    'telebot.apps.TelebotConfig',
 ]
 
 MIDDLEWARE = [

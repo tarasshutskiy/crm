@@ -1,12 +1,18 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block content %}
+{% block thanks %}
 
 
   	<section>
+		{% if name %}
   		<div class="container">
+  			<CENTER style = 'margin-top: 35%; margin-bottom: 35%;'><h1>{{ name }}, Thanks for the application!</h1></CENTER>
+  		</div>
+		{% else %}
+		<div class="container">
   			<CENTER style = 'margin-top: 35%; margin-bottom: 35%;'><h1>Thanks for the application!</h1></CENTER>
   		</div>
+		{% endif %}
   	</section>
 
 {% endblock %}
