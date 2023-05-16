@@ -31,14 +31,9 @@ class ComentCrm(models.Model):
     coment_name = models.TextField(verbose_name='Text comment')
     coment_dt = models.DateTimeField(auto_now=True, verbose_name='Date create')
 
-
     class Meta:
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
 
     def __str__(self):
         return self.coment_name
-
-
-
-

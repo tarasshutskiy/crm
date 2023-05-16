@@ -13,5 +13,3 @@ class CmsSlider(models.Model):
 
     def __str__(self):
         return self.cms_title
-
-

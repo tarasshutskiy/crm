@@ -1,19 +1,13 @@
 from django.shortcuts import render
-from django.views.generic.list import ListView
+
+from app.models import Order
+from cms.forms import OrderForms
 from cms.models import CmsSlider
 from price.models import PriceCard, PriceTable
-from cms.forms import OrderForms
-from app.models import Order
 from telebot.sendmessage import sendTelegram
 
 
-# class CmsListView(ListView):
-#     template_name = 'app/index.html'
-#     model = CmsSlider
-#     context_object_name = 'slider_list'
-#
-
-def main_page(requast):
+def main_page(request):
     slider_list = CmsSlider.objects.all()
     pc_1 = PriceCard.objects.get(pk=1)
     pc_2 = PriceCard.objects.get(pk=2)
@@ -27,16 +21,16 @@ def main_page(requast):
                 'price_table': price_table,
                 'form': form,
                 }
-    return render(requast, 'app/index.html', dict_obj)
+    return render(request, 'app/index.html', dict_obj)
 
 
-def thanks_page(requast):
-    if requast.POST:
-        name = requast.POST['name']
-        phone = requast.POST['phone']
+def thanks_page(request):
+    if request.POST:
+        name = request.POST['name']
+        phone = request.POST['phone']
         element = Order(order_name=name, order_phone=phone)
         element.save()
         sendTelegram(tg_name=name, tg_phone=phone)
-        return render(requast, 'app/thanks.html', {'name': name, })
+        return render(request, 'app/thanks.html', {'name': name, })
     else:
-        return render(requast, 'app/thanks.html')
+        return render(request, 'app/thanks.html')

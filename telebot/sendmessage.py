@@ -1,4 +1,5 @@
 import requests
+
 from telebot.models import TeleSettings
 
 
@@ -24,8 +25,9 @@ def sendTelegram(tg_name, tg_phone):
         try:
             req = requests.post(method, data={
                 'chat_id': chat_id,
-                'text': text_slise,})
-        except:
+                'text': text_slise,
+            })
+        except NameError:
             pass
         finally:
             if req.status_code != 200:
